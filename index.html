@@ -1,42 +1,100 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>给最特别的你 ❤️</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ryze | Personal Page</title>
     <style>
+        /* ===== 全局样式 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            background: #0f172a; /* ChatGPT风格深蓝底 */
+            color: #e2e8f0;
+            font-family: "Inter", "PingFang SC", sans-serif;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            font-family: "Helvetica Neue", sans-serif;
-            color: #fff;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease;
         }
+
+        /* ===== 标题 ===== */
         h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(0,0,0,0.3);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
+
+        /* ===== 副标题 ===== */
         p {
-            font-size: 1.2em;
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
-        .heart {
-            font-size: 100px;
-            animation: pulse 1s infinite;
+
+        /* ===== 按钮 ===== */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+        a.btn {
+            text-decoration: none;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        a.btn:hover {
+            background: #3b82f6;
+            transform: translateY(-3px);
+        }
+
+        /* ===== 底部版权 ===== */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        /* ===== 动画 ===== */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-<div class="heart">❤️</div>
-<h1>我喜欢你！</h1>
-<p>今天，是我鼓起勇气告诉你的一天。</p>
+<main>
+    <h1>Hi, I'm Ryze 👋</h1>
+    <p>
+        一名热爱技术的 Java 工程师<br />
+        专注于后端开发、系统优化与新技术探索。
+    </p>
+    <div class="btn-group">
+        <a href="https://github.com/Ryzehoom" target="_blank" class="btn">GitHub</a>
+        <a href="mailto:yourname@email.com" class="btn">联系我</a>
+    </div>
+</main>
+
+<footer>© 2025 Ryze. All rights reserved.</footer>
 </body>
 </html>
