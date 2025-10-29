@@ -3,98 +3,64 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ryze | Personal Page</title>
+    <title>我的主页</title>
     <style>
-        /* ===== 全局样式 ===== */
-        * {
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #2b2d42, #8d99ae);
+            color: white;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-        body {
-            background: #0f172a; /* ChatGPT风格深蓝底 */
-            color: #e2e8f0;
-            font-family: "Inter", "PingFang SC", sans-serif;
-            height: 100vh;
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 18px;
+            color: #dbe2ef;
+        }
+        main {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            overflow: hidden;
-            animation: fadeIn 1.5s ease;
+            gap: 30px;
+            padding: 20px;
         }
-
-        /* ===== 标题 ===== */
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
+        iframe {
+            width: 90%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-
-        /* ===== 副标题 ===== */
-        p {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        /* ===== 按钮 ===== */
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-        }
-        a.btn {
-            text-decoration: none;
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            border: 1px solid #3b82f6;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        a.btn:hover {
-            background: #3b82f6;
-            transform: translateY(-3px);
-        }
-
-        /* ===== 底部版权 ===== */
         footer {
-            position: absolute;
-            bottom: 20px;
-            color: #475569;
-            font-size: 0.9rem;
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+            color: #ccc;
         }
-
-        /* ===== 动画 ===== */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
+        @media (max-width: 768px) {
+            iframe {
+                height: 400px;
             }
         }
     </style>
 </head>
 <body>
+<header>
+    <h1>Hi，我是Ryze</h1>
+    <p>这是我的个人介绍页，下面展示的是我的文件服务器 👇</p>
+</header>
 <main>
-    <h1>Hi, I'm Ryze 👋</h1>
-    <p>
-        一名热爱技术的 Java 工程师<br />
-        专注于后端开发、系统优化与新技术探索。
-    </p>
-    <div class="btn-group">
-        <a href="https://github.com/Ryzehoom" target="_blank" class="btn">GitHub</a>
-        <a href="mailto:yourname@email.com" class="btn">联系我</a>
-    </div>
+    <iframe src="http://117.72.44.28/" title="文件服务器"></iframe>
 </main>
-
-<footer>© 2025 Ryze. All rights reserved.</footer>
+<footer>
+    © 2025 Ryze · Powered by GitHub Pages
+</footer>
 </body>
 </html>
