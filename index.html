@@ -3,64 +3,251 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>我的主页</title>
+    <title>我的主页 - 研究生个人介绍</title>
     <style>
+        :root {
+            --primary-color: #ff6b9d;
+            --secondary-color: #a8e6cf;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --text-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --shadow: 0 8px 32px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+        }
+
         body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #2b2d42, #8d99ae);
-            color: white;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-light);
             margin: 0;
             padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
+
         header {
             text-align: center;
-            padding: 60px 20px 40px;
+            padding: 80px 20px 60px;
+            position: relative;
+            animation: fadeInDown 1s ease-out;
         }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: -1;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            animation: pulse 2s infinite;
+        }
+
         header h1 {
-            font-size: 42px;
+            font-size: 48px;
             margin-bottom: 10px;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
+
         header p {
-            font-size: 18px;
-            color: #dbe2ef;
+            font-size: 20px;
+            color: #e9ecef;
+            max-width: 600px;
+            margin: 0 auto;
         }
+
         main {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 40px;
             padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        iframe {
-            width: 90%;
-            height: 600px;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+
+        .section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: fadeInUp 1s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section li {
+            background: rgba(255,255,255,0.05);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .section li:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            text-align: center;
+            padding: 10px;
+            background: var(--primary-color);
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.05);
+        }
+
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             font-size: 14px;
             color: #ccc;
+            margin-top: 60px;
+            animation: fadeInUp 1s ease-out 0.5s both;
         }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         @media (max-width: 768px) {
-            iframe {
-                height: 400px;
-            }
+            header h1 { font-size: 36px; }
+            .section { padding: 20px; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
 <header>
-    <h1>Hi，我是Ryze</h1>
-    <p>这是我的个人介绍页，下面展示的是我的文件服务器 👇</p>
+    <div class="avatar">👩‍🎓</div>
+    <h1 id="userName">Alice</h1>
+    <p>欢迎来到我的个人介绍页面！作为一名计算机科学研究生，我热爱探索AI与数据科学的奇妙世界。让我们一起交流与成长。</p>
 </header>
+
 <main>
-    <iframe src="http://117.72.44.28/" title="文件服务器"></iframe>
+    <section class="section" id="about">
+        <h2>关于我</h2>
+        <p>我是Alice，一名就读于清华大学计算机科学专业的硕士研究生。2023年本科毕业于北京大学，主修软件工程。研究生阶段，我专注于人工智能和机器学习的研究，致力于开发可持续的智能系统。</p>
+        <p>在闲暇时，我喜欢阅读科幻小说、跑步，以及参与开源项目。这让我保持好奇心，并不断挑战自我。</p>
+    </section>
+
+    <section class="section" id="education">
+        <h2>教育背景</h2>
+        <ul>
+            <li><strong>硕士 - 清华大学</strong><br>计算机科学与技术，2023 - 现今<br>研究方向：人工智能</li>
+            <li><strong>学士 - 北京大学</strong><br>软件工程，2019 - 2023<br>GPA: 3.8/4.0</li>
+        </ul>
+    </section>
+
+    <section class="section" id="skills">
+        <h2>技能与兴趣</h2>
+        <div class="skills-grid">
+            <div class="skill-item">Python</div>
+            <div class="skill-item">TensorFlow</div>
+            <div class="skill-item">数据分析</div>
+            <div class="skill-item">机器学习</div>
+            <div class="skill-item">前端开发</div>
+            <div class="skill-item">开源贡献</div>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <h2>代表项目</h2>
+        <ul>
+            <li><strong>AI图像生成器</strong><br>使用GAN模型开发的一个开源工具，已在GitHub上获得500+星标。</li>
+            <li><strong>可持续数据平台</strong><br>研究生课题项目，聚焦环保数据可视化，合作发表论文于ICML 2025。</li>
+            <li><strong>个人博客</strong><br>基于React的博客系统，分享学习笔记和技术心得。</li>
+        </ul>
+    </section>
 </main>
+
 <footer>
-    © 2025 Ryze · Powered by GitHub Pages
+    © 2025 <span id="footerName">Alice</span> · Powered by GitHub Pages · <a href="#" style="color: var(--secondary-color);">联系我</a>
 </footer>
+
+<script>
+    // 从URL参数获取姓名
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name') || 'Alice'; // 默认姓名
+
+    // 更新页面中的姓名
+    document.getElementById('userName').textContent = name;
+    document.getElementById('footerName').textContent = name;
+
+    // 添加交互：点击技能项显示提示
+    document.querySelectorAll('.skill-item').forEach(item => {
+        item.addEventListener('click', () => {
+            alert(`我对${item.textContent}很熟练！有兴趣合作吗？`);
+        });
+    });
+
+    // 平滑滚动到锚点
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
 </body>
 </html>
